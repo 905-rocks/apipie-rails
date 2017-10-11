@@ -42,6 +42,7 @@ module Apipie
       @_metadata = dsl_data[:meta]
       @_api_base_url = dsl_data[:api_base_url]
       @_headers = dsl_data[:headers]
+      @_group = dsl_data[:group]
 
       if dsl_data[:app_info]
         Apipie.configuration.app_info[_version] = dsl_data[:app_info]
@@ -109,7 +110,8 @@ module Apipie
         :formats => @_formats,
         :metadata => @_metadata,
         :methods => methods,
-        :headers => _headers
+        :headers => _headers,
+        :group => @_group
       }
     end
 

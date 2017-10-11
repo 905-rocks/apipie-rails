@@ -66,6 +66,11 @@ module Apipie
           elsif params[:resource].present? || params[:method].present?
             render 'apipie_404', :status => 404
           else
+            @results = @doc[:resources].inject({}) do |result, (k, v)|
+              result[v[:group]] ||= []
+              result[v[:group]] << v
+              result
+            end
             render 'index'
           end
         end

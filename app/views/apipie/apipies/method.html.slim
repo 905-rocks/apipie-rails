@@ -1,0 +1,21 @@
+.ui.breadcrumb
+  a.section href='#{@doc[:doc_url]}#{@doc[:link_extension]}'
+    = "#{@doc[:name]} #{@resource[:version]}"
+  .divider = " / "
+  a.section href="#{@resource[:doc_url]}#{@doc[:link_extension]}"
+    = @resource[:name]
+  .divider = " / "
+  .section.active
+    = @method[:name]
+.ui.segment
+  - @method[:apis].each do |api|
+    .ui.header.dividing
+      h2
+        .ui.label.http_method class="#{api[:http_method].downcase}"
+          = api[:http_method]
+        = api[:api_url]
+        - if api[:deprecated]
+          code DEPRECATED
+      div.item_meta
+        = raw api[:short_description]
+  = render(:partial => "method_detail", :locals => {:method => @method, :h_level => 2})

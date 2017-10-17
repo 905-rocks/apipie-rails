@@ -1,0 +1,19 @@
+- show_metadata = errors.reject { |err| err[:metadata].blank? }.size > 0
+table.ui.celled.striped.table
+  thead
+    tr
+      th = t('apipie.error_code', default: 'Code')
+      th = t('apipie.error_description', default: [:description, 'Description'])
+      - if show_metadata
+        th = t('apipie.error_metadata', default: [:metadata, 'Metadata'])
+  tbody
+    - errors.each do |err|
+      tr
+        td
+          span class="#{Apipie.label_class_for_error(err)}"
+            = err[:code]
+        td
+          = err[:description]
+        - if show_metadata
+          td
+            = render(:partial => "metadata", :locals => {:meta => err[:metadata]}) unless err[:metadata].blank?

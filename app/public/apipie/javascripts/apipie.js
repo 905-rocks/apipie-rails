@@ -99,7 +99,7 @@ semantic.ready = function() {
                 var
                   $title   = $(this).children('h4').eq(0),
                   text     = $title.data('name'),
-                  safeName = handler.getSafeName(text),
+                  safeName = handler.getSafeName($title.text()),
                   id       = window.escape(safeName),
                   $anchor  = $('<a />').addClass('anchor').attr('id', id)
                 ;
@@ -269,7 +269,7 @@ semantic.ready = function() {
             $anchor  = $('<a />').addClass('anchor').attr('id', id)
           ;
           if($title.length > 0) {
-            $title.after($anchor);
+            $title.before($anchor);
           }
         })
       ;

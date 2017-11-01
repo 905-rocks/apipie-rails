@@ -3,7 +3,6 @@
     h2.ui.header.dividing #{k || '未分组'}
     - items.each do |api|
       .example
-        a class="anchor active" id="#{api[:name].gsub(/ /,'_')}"
         h4.sub_item.ui.header data-name="#{api[:short_description] || api[:name]}"
           a href="#{api[:doc_url]}#{@doc[:link_extension]}"
             = api[:name]

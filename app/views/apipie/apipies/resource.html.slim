@@ -35,7 +35,7 @@
                 = api[:http_method]
               = api[:api_url]
               - if api[:deprecated]
-                code DEPRECATED
+                code.ui.grey.label DEPRECATED
             p = raw api[:short_description]
 
         - unless m[:see].empty?

@@ -15,7 +15,7 @@
           = api[:http_method]
         = api[:api_url]
         - if api[:deprecated]
-          code DEPRECATED
+          code.ui.grey.label DEPRECATED
       div.item_meta
         = raw api[:short_description]
   = render(:partial => "method_detail", :locals => {:method => @method, :h_level => 2})
